@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/tawla.dir/main.cpp.o CMakeFiles/tawla.dir/cpp_files/tawla.cpp.o CMakeFiles/tawla.dir/cpp_files/random_t.cpp.o  -o tawla 

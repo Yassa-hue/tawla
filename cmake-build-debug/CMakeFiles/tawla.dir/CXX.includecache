@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/yassatamer/CLionProjects/tawla/cpp_files/random_t.cpp
+../header_files/random_t.h
+/home/yassatamer/CLionProjects/tawla/header_files/random_t.h
+
+/home/yassatamer/CLionProjects/tawla/header_files/random_t.h
+
