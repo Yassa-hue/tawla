@@ -16,14 +16,14 @@ random_t::random_t(const int _pivot, const int _seed) : random_t() {
 }
 
 int random_t::random_number () {
-    int res = (seed*pivot + pivot)%max_number +1;
-    seed = res*pivot + 534098;
-    return res;
+    return rand();
 }
 
 void random_t::set_pivot(const int _pivot) {
-    if (_pivot <= main_pivot && _pivot > 1)
-        pivot = _pivot;
+//    if (_pivot <= main_pivot && _pivot > 1)
+//        pivot = _pivot;
+
+    srand(_pivot);
 }
 
 

@@ -18,6 +18,13 @@ tawla::tawla() : place(vector<vector<bool>> (27)), dice1(-1), dice2(-1), current
         place[24].push_back(black);
     }
 
+
+    int random_num;
+    cout << "inter a random number : ";
+    cin >> random_num;
+
+    random_class.set_pivot(random_num);
+
     while (true) {
         if (pieces1 == 0) {
             cout << "player 1 win the game" << endl;
@@ -34,40 +41,32 @@ tawla::tawla() : place(vector<vector<bool>> (27)), dice1(-1), dice2(-1), current
         print();
 
 
-        int _start, _end, _eat, _mode;
-        cout << "1 for move\n";
-        if ((current_player == white && home1 == num_of_pieces) || (current_player == black && home2 == num_of_pieces))
-            cout << "2 for eat\n";
-        cout << " ==>> ";
-        cin >> _mode;
+        int _start, _end, _eat, _mode = 1;
+
+        if ((current_player == white && home1 == num_of_pieces) || (current_player == black && home2 == num_of_pieces)) {
+            cout << "1 for move\n2 for eat\n ==>> ";
+            cin >> _mode;
+        }
+//        cout << "1 for move\n";
+//        if ((current_player == white && home1 == num_of_pieces) || (current_player == black && home2 == num_of_pieces))
+//            cout << "2 for eat\n";
+//        cout << " ==>> ";
+//        cin >> _mode;
 
         if (_mode == 1) {
-            cout << "1 for dice 1 & 2\n2 for the sum\n";
-            cin >> _mode;
-
-            if (_mode == 1) {
-                for (int dice = 1; dice <= 2; ++dice) {
-                    while (true) {
-                        cout << "dice " << dice << " : ";
-                        cin >> _start >> _end;
-                        if (_start + (dice == 1 ? dice1 : dice2) == _end && play_with_distance(_start, _end)) {
-                            cout << "nice move" << endl;
-                            break;
-                        } else
-                            cout << "wrong move, try again" << endl;
-                    }
-                }
-            } else {
+            for (int dice = 1; dice <= 2; ++dice) {
                 while (true) {
-                    cout << "dice 1,2 : ";
+                    cout << "dice " << dice << " : ";
                     cin >> _start >> _end;
-                    if (_start + dice1+ dice2 == _end && play_with_distance(_start, _end)) {
+                    if ((current_player == white && _start + (dice == 1 ? dice1 : dice2) == _end && play_with_distance(_start, _end))
+                        || (current_player == black && _end + (dice == 1 ? dice1 : dice2) == _start && play_with_distance(_start, _end))) {
                         cout << "nice move" << endl;
                         break;
                     } else
-                        cout <<  "wrong move, try again" << endl;
+                        cout << "wrong move, try again" << endl;
                 }
             }
+
         } else {
             cout << "1 for dice 1 & 2\n2 for the sum\n";
             cin >> _mode;
@@ -97,11 +96,9 @@ tawla::tawla() : place(vector<vector<bool>> (27)), dice1(-1), dice2(-1), current
             }
 
         }
+        current_player = !current_player;
 
     }
-
-
-
 }
 
 
@@ -136,8 +133,8 @@ bool tawla::eat_dice(int _dice) {
 
 
 void tawla::throw_dice() {
-    dice1 = random_class.random_number();
-    dice2 = random_class.random_number();
+    dice1 = random_class.random_number()%6 +1;
+    dice2 = random_class.random_number()%6 +1;
 }
 
 
@@ -158,7 +155,21 @@ void tawla::print() const {
                  |
      | | | | | | | | | | | | | |
      */
+    cout << "------------------------------------" << endl;
+    for (int row = 12; row >= 1; --row) {
+        cout << row/10 << ' ';
 
+        if (row == 7)
+            cout << "  ";
+    }
+
+    cout << endl;
+    for (int row = 12; row >= 1; --row) {
+        cout << row%10 << ' ';
+        if (row == 7)
+            cout << "  ";
+    }
+    cout << endl;
 
     for (int i = 0; i < 2; ++i) {
         for (int pl = 12; pl >= 1; --pl) {
@@ -221,6 +232,27 @@ void tawla::print() const {
         }
         cout << endl;
     }
+
+
+    for (int row = 13; row <= 24; ++row) {
+        cout << row / 10 << ' ';
+        if (row == 18)
+            cout << "  ";
+    }
+    cout << endl;
+    for (int row = 13; row <= 24; ++row) {
+        cout << row % 10 << ' ';
+        if (row == 18)
+            cout << "  ";
+    }
+    cout << endl;
+
+
+    cout << "------------------------------------" << endl;
+
+    cout << "       dice1 : " << dice1 << " , dice2 : " << dice2 << endl;
+
+    cout << "------------------------------------" << endl;
 }
 
 

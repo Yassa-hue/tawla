@@ -6,9 +6,23 @@
 
 #IncludeRegexTransform: 
 
-/home/yassatamer/CLionProjects/tawla/cpp_files/random_t.cpp
+/home/yassatamer/CLionProjects/tawla/cpp_files/tawla.cpp
+../header_files/tawla.h
+/home/yassatamer/CLionProjects/tawla/header_files/tawla.h
 ../header_files/random_t.h
 /home/yassatamer/CLionProjects/tawla/header_files/random_t.h
 
+/home/yassatamer/CLionProjects/tawla/header_files/main_header.h
+bits/stdc++.h
+-
+
+/home/yassatamer/CLionProjects/tawla/header_files/random_t.h
+cstdlib
+-
+
+/home/yassatamer/CLionProjects/tawla/header_files/tawla.h
+../header_files/main_header.h
+/home/yassatamer/CLionProjects/tawla/header_files/main_header.h
+../header_files/random_t.h
 /home/yassatamer/CLionProjects/tawla/header_files/random_t.h
 

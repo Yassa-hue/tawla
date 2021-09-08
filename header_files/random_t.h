@@ -26,6 +26,9 @@
 #define TAWLA_RANDOM_T_H
 
 
+#include <cstdlib>
+
+
 class random_t {
 private:
 
